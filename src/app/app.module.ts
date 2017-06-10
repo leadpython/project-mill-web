@@ -2,19 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AuthenticationPageComponent } from './pages/authentication-page/authentication-page.component';
+
+const appRoutes: Routes = [
+  { path: '', component: AuthenticationPageComponent },
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthenticationPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

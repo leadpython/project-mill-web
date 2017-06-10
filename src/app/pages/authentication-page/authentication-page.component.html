@@ -1,0 +1,26 @@
+<div id="container">
+  <span>
+    <button (click)="isRegister = !isRegister;">SIGNIN</button>
+    <button (click)="isRegister = !isRegister;">SIGNUP</button>
+  </span>
+  <form *ngIf="!isRegister">
+    <label>USERNAME</label>
+    <input>
+    <label>PASSWORD</label>
+    <input>
+    <button class="submit">LOGIN</button>
+  </form>
+  <form *ngIf="isRegister">
+    <label>USERNAME</label>
+    <input>
+    <label>EMAIL</label>
+    <input>
+    <label>PASSWORD</label>
+    <input>
+    <label>FIRST NAME</label>
+    <input>
+    <label>LAST NAME</label>
+    <input>
+    <button class="submit">REGISTER</button>
+  </form>
+</div>
