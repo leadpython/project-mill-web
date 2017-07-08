@@ -5,10 +5,10 @@
   </span>
   <form *ngIf="!isRegister">
     <label>USERNAME</label>
-    <input>
+    <input [(ngModel)]="username" name="username">
     <label>PASSWORD</label>
-    <input>
-    <button class="submit">LOGIN</button>
+    <input [(ngModel)]="password" name="password">
+    <button class="submit" (click)="register()">LOGIN</button>
   </form>
   <form *ngIf="isRegister">
     <label>USERNAME</label>
