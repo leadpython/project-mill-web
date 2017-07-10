@@ -6,10 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 // SERVICES
 import { AuthenticationService } from './services/authentication.service';
-import { HttpService } from './services/http.service';
+import { RegistrationService } from './services/registration.service';
 
 import { AppComponent } from './app.component';
 import { AuthenticationPageComponent } from './pages/authentication-page/authentication-page.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { VendorProfilePageComponent } from './pages/vendor-profile-page/vendor-profile-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: AuthenticationPageComponent },
@@ -18,7 +20,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationPageComponent
+    AuthenticationPageComponent,
+    DashboardPageComponent,
+    VendorProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthenticationService,
-    HttpService
+    RegistrationService
   ],
   bootstrap: [AppComponent]
 })

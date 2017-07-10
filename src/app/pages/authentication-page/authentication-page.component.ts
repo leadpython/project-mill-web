@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpService } from 'app/services/http.service';
+import { AuthenticationService } from 'app/services/authentication.service';
+import { RegistrationService } from 'app/services/registration.service';
 
 @Component({
   selector: 'authentication-page',
@@ -7,22 +8,46 @@ import { HttpService } from 'app/services/http.service';
   styleUrls: ['./authentication-page.component.css']
 })
 export class AuthenticationPageComponent {
-  public username: string;
-  public password: string;
+  public loginEmail: string;
+  public loginPassword: string;
+  public registerEmail: string;
+  public registerPassword: string;
+  public registerFirstname: string;
+  public registerLastname: string;
+  public isAuthenticated: boolean = true;
+  public isValidEmail: boolean = true;
+  public isValidPassword: boolean = true;
+  public isValidFirstname: boolean = true;
+  public isValidLastname: boolean = true;
+  public doesUserExist: boolean = false;
 
-  constructor(private HttpService: HttpService) {}
+  constructor(private AuthenticationService: AuthenticationService, private RegistrationService: RegistrationService) {}
   login() {
-    this.HttpService.getAllVendors().subscribe((data) => {
-      console.log(data);
+    let user: object = { email: this.loginEmail, password: this.loginPassword};
+    this.AuthenticationService.authenticate(user).subscribe((data) => {
+      this.isAuthenticated = data.isUserAuthenticated;
+      if (this.isAuthenticated) {
+        window.localStorage.setItem('projectMillToken', data.token);
+        window.localStorage.setItem('projectMillUserId', data.id);
+      }
     })
   }
   register() {
-    let vendor = { username: '', password: ''};
-    vendor.username = this.username;
-    vendor.password = this.password;
-    this.HttpService.registerVendor(vendor).subscribe((data) => {
-      console.log(data);
+    let user: object = { email: this.registerEmail || '', password: this.registerPassword || '', firstname: this.registerFirstname || '', lastname: this.registerLastname || '' };
+    if (!this.registrationCheck(user)) {
+      // do not go through with registration if information are invalid
+      return;
+    }
+    this.RegistrationService.register(user).subscribe((data) => {
+      this.doesUserExist = data.doesUserExist;
     })
+  }
+  registrationCheck(user) {
+    this.isValidEmail = user.email.includes('@') && user.email.length > 0 && user.email.includes('.');
+    this.isValidPassword = /\d/.test(user.password);
+    this.isValidFirstname = user.firstname.length > 0;
+    this.isValidLastname = user.lastname.length > 0;
+    return this.isValidEmail && this.isValidPassword && this.isValidFirstname && this.isValidLastname;
   }
 }
 

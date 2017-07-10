@@ -6,11 +6,12 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AuthenticationService {
+export class RegistrationService {
   constructor(private _http: Http) {}
-  authenticate(user: object) {
-    return this._http.post('https://project-mill-backend.herokuapp.com/api/vendors/login', user).map((response) => {
+  register(user: object) {
+    return this._http.post('https://project-mill-backend.herokuapp.com/api/vendors/register', user).map((response) => {
       return response.json();
     });
   }
 }
+

@@ -4,23 +4,27 @@
     <button (click)="isRegister = !isRegister;">SIGNUP</button>
   </span>
   <form *ngIf="!isRegister">
-    <label>USERNAME</label>
-    <input [(ngModel)]="username" name="username">
+    <label>EMAIL</label>
+    <input type="text" [(ngModel)]="loginEmail" name="loginEmail">
     <label>PASSWORD</label>
-    <input [(ngModel)]="password" name="password">
-    <button class="submit" (click)="register()">LOGIN</button>
+    <input type="password" [(ngModel)]="loginPassword" name="loginPassword">
+    <p *ngIf="!isAuthenticated">Invalid credentials.</p>
+    <button class="submit" (click)="login()">LOGIN</button>
   </form>
   <form *ngIf="isRegister">
-    <label>USERNAME</label>
-    <input>
     <label>EMAIL</label>
-    <input>
+    <input type="text" [(ngModel)]="registerEmail" name="registerEmail" required>
+    <p *ngIf="!isValidEmail">Invalid email address.</p>
+    <p *ngIf="doesUserExist">User with email address already exists.</p>
     <label>PASSWORD</label>
-    <input>
+    <input type="password" [(ngModel)]="registerPassword" name="registerPassword" required>
+    <p *ngIf="!isValidPassword">Invalid password. Must use at least 1 number.</p>
     <label>FIRST NAME</label>
-    <input>
+    <input type="text" [(ngModel)]="registerFirstname" name="registerFirstname" required>
+    <p *ngIf="!isValidFirstname">Required.</p>
     <label>LAST NAME</label>
-    <input>
-    <button class="submit">REGISTER</button>
+    <input type="text" [(ngModel)]="registerLastname" name="registerLastname" required>
+    <p *ngIf="!isValidLastname">Required.</p>
+    <button class="submit" (click)="register()">REGISTER</button>
   </form>
 </div>
