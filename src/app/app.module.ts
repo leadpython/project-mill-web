@@ -15,6 +15,8 @@ import { VendorProfilePageComponent } from './pages/vendor-profile-page/vendor-p
 
 const appRoutes: Routes = [
   { path: '', component: AuthenticationPageComponent },
+  { path: 'dashboard', component: DashboardPageComponent },
+  { path: 'profile', component: VendorProfilePageComponent }
 ];
 
 @NgModule({
