@@ -1,0 +1,17 @@
+nav {
+  background: #475b79;
+}
+
+nav a {
+  color: white;
+}
+
+#dahsboardSidebar {
+  margin-top: 50px;
+  background: rgb(225,225,225);
+  padding: 0;
+}
+
+#dahsboardSidebar li a {
+ text-align: right;
+}

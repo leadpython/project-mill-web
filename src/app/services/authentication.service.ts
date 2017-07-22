@@ -15,17 +15,20 @@ export class AuthenticationService {
     });
   }
   checkSession() {
-    let user = {
-      id: window.localStorage.getItem('projectMillUserId'),
-      token: window.localStorage.getItem('projectMillToken')
+    var thisClass = this;
+    let user: object = {
+      id: window.localStorage.getItem('projectMillUserId') || '123',
+      token: window.localStorage.getItem('projectMillToken') || '123'
     };
-    return this._http.put('https://project-mill-backend.herokuapp.com/api/vendors/login', user).map((response) => {
+    this._http.put('https://project-mill-backend.herokuapp.com/api/vendors/check-session', user).map((response) => {
       return response.json();
+    }).subscribe((data) => {
+      if (data) {
+        thisClass.logout();
+      }
     });
   }
   logout() {
-    window.localStorage.setItem('projectMillUserId', null);
-    window.localStorage.setItem('projectMillToken', null);
     this.Router.navigateByUrl('/');
   }
 }

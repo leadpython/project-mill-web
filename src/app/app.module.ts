@@ -8,10 +8,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 import { RegistrationService } from './services/registration.service';
 
+// PAGES
 import { AppComponent } from './app.component';
 import { AuthenticationPageComponent } from './pages/authentication-page/authentication-page.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { VendorProfilePageComponent } from './pages/vendor-profile-page/vendor-profile-page.component';
+
+// COMPONENT
+import { DatePickerModule } from './components/datepicker/datepicker.module';
 
 const appRoutes: Routes = [
   { path: '', component: AuthenticationPageComponent },
@@ -30,7 +34,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DatePickerModule
   ],
   providers: [
     AuthenticationService,

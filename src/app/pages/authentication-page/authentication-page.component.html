@@ -1,30 +1,30 @@
-<div id="container">
-  <span>
-    <button (click)="isRegister = !isRegister;">SIGNIN</button>
-    <button (click)="isRegister = !isRegister;">SIGNUP</button>
-  </span>
-  <form *ngIf="!isRegister">
-    <label>EMAIL</label>
-    <input type="text" [(ngModel)]="loginEmail" name="loginEmail">
-    <label>PASSWORD</label>
-    <input type="password" [(ngModel)]="loginPassword" name="loginPassword">
-    <p *ngIf="!isAuthenticated">Invalid credentials.</p>
-    <button class="submit" (click)="login()">LOGIN</button>
-  </form>
-  <form *ngIf="isRegister">
-    <label>EMAIL</label>
-    <input type="text" [(ngModel)]="registerEmail" name="registerEmail" required>
-    <p *ngIf="!isValidEmail">Invalid email address.</p>
-    <p *ngIf="doesUserExist">User with email address already exists.</p>
-    <label>PASSWORD</label>
-    <input type="password" [(ngModel)]="registerPassword" name="registerPassword" required>
-    <p *ngIf="!isValidPassword">Invalid password. Must use at least 1 number.</p>
-    <label>FIRST NAME</label>
-    <input type="text" [(ngModel)]="registerFirstname" name="registerFirstname" required>
-    <p *ngIf="!isValidFirstname">Required.</p>
-    <label>LAST NAME</label>
-    <input type="text" [(ngModel)]="registerLastname" name="registerLastname" required>
-    <p *ngIf="!isValidLastname">Required.</p>
-    <button class="submit" (click)="register()">REGISTER</button>
-  </form>
+<div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #475b79;">
+  <div id="container">
+    <form *ngIf="!isRegister">
+      <label>EMAIL</label>
+      <input type="text" placeholder="Enter your email addresss..." [(ngModel)]="loginEmail" name="loginEmail">
+      <label>PASSWORD</label>
+      <input type="password" placeholder="Enter your password..." [(ngModel)]="loginPassword" name="loginPassword">
+      <p *ngIf="!isAuthenticated">Invalid credentials.</p>
+      <button type="button" class="submit" (click)="login()">LOGIN</button>
+      <div>Don't have an account? <a href="javascript: return false;" (click)="isRegister = !isRegister;">REGISTER</a></div>
+    </form>
+    <form *ngIf="isRegister">
+      <label>EMAIL</label>
+      <input type="text" placeholder="example@example.com" [(ngModel)]="registerEmail" name="registerEmail" required>
+      <p *ngIf="!isValidEmail">Invalid email address.</p>
+      <p *ngIf="doesUserExist">User with email address already exists.</p>
+      <label>PASSWORD</label>
+      <input type="password" [(ngModel)]="registerPassword" name="registerPassword" required>
+      <p *ngIf="!isValidPassword">Invalid password. Must use at least 1 number.</p>
+      <label>FIRST NAME</label>
+      <input type="text" placeholder="John" [(ngModel)]="registerFirstname" name="registerFirstname" required>
+      <p *ngIf="!isValidFirstname">Required.</p>
+      <label>LAST NAME</label>
+      <input type="text" placeholder="Doe" [(ngModel)]="registerLastname" name="registerLastname" required>
+      <p *ngIf="!isValidLastname">Required.</p>
+      <button type="button" class="submit" (click)="register()">REGISTER</button>
+      <div>Already have an account? <a href="javascript: return false;" (click)="isRegister = !isRegister;">LOGIN</a></div>
+    </form>
+  </div>
 </div>

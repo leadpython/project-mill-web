@@ -1,0 +1,61 @@
+#profileInfoBox {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+}
+
+#profilePictureContainer {
+  display: inline-block;
+  background: white;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  height: 85px;
+  width: 85px;
+}
+
+#profileInfo {
+  color: white;
+  text-align: left;
+  position: absolute;
+  border: 1px solid white;
+  top: 5px;
+  right: 5px;
+  left: 95px;
+  height: 85px;
+}
+
+#datePickerContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  background: rgba(255,255,255,0.2);
+}
+
+#datePickerContainer:active {
+  background: rgba(255,255,255,0.75);
+}
+
+#timeSlots {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 180px;
+  bottom: 5px;
+  background: white;
+}
+
+#currentDate {
+  position: absolute;
+  top: 130px;
+  height: 50px;
+  left: 5px;
+  right: 5px;
+  background: rgba(0,0,0,0.25);
+  color: black;
+}

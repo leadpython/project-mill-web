@@ -1,4 +1,4 @@
-import { Component, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { AuthenticationService } from 'app/services/authentication.service';
 
@@ -7,16 +7,10 @@ import { AuthenticationService } from 'app/services/authentication.service';
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.css']
 })
-export class DashboardPageComponent implements AfterViewChecked {
+export class DashboardPageComponent implements OnInit {
   constructor(private AuthenticationService: AuthenticationService) { }
-  ngAfterViewChecked() {
+  ngOnInit() {
     // check session
-    this.AuthenticationService.checkSession().subscribe((isSessionDone) => {
-      // if session is done, logout
-      if (isSessionDone) {
-        // logout
-        this.AuthenticationService.logout();
-      }
-    })
+    this.AuthenticationService.checkSession();
   }
 }

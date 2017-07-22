@@ -1,3 +1,19 @@
-<p>
-  vendor-profile-page works!
-</p>
+<div class="page-container" style="background: #475b79">
+  <div id="profileInfoBox">
+    <div id="profilePictureContainer"></div>
+    <div id="profileInfo">
+      Jeffrey Campecino <br>
+      Programmer
+    </div>
+    <!--<div id="datePickerContainer">
+      <datepicker (outputEvents)="datepickerEvent($event)" [options]="options" [(ngModel)]="date"></datepicker>
+    </div>-->
+  </div>
+  <div id="currentDate">{{date.formatted}}</div>
+  <!--<div id="timeSlots">
+    <div *ngFor="let slot of timeSlots" style="background: white; height: 50px; width: 100%;">
+      Availability: {{slot.available}}<br>
+      {{slot.startTime}} --> {{slot.endTime}}
+    </div>-->
+  </div>
+</div>

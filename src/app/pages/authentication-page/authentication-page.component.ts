@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from 'app/services/authentication.service';
 import { RegistrationService } from 'app/services/registration.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'authentication-page',
@@ -21,14 +22,16 @@ export class AuthenticationPageComponent {
   public isValidLastname: boolean = true;
   public doesUserExist: boolean = false;
 
-  constructor(private AuthenticationService: AuthenticationService, private RegistrationService: RegistrationService) {}
+  constructor(private AuthenticationService: AuthenticationService, private RegistrationService: RegistrationService, private Router: Router) {}
   login() {
     let user: object = { email: this.loginEmail, password: this.loginPassword};
     this.AuthenticationService.authenticate(user).subscribe((data) => {
+      console.log(data);
       this.isAuthenticated = data.isUserAuthenticated;
       if (this.isAuthenticated) {
         window.localStorage.setItem('projectMillToken', data.token);
         window.localStorage.setItem('projectMillUserId', data.id);
+        this.Router.navigateByUrl('/dashboard');
       }
     })
   }
